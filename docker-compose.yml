@@ -4,26 +4,26 @@ services:
     image: hatsapol/app:1.0.0
     container_name: my-app
     ports: 
-      - 1337:1337
+      - ${APP_PORTS}
     environment:
       - DATABASE_CLIENT=postgres
       - DATABASE_HOST=db
       - DATABASE_PORT=5432
-      - DATABASE_NAME=hatsapol
-      - DATABASE_USERNAME=hatsapol
-      - DATABASE_PASSWORD=hatsapol123
-      - DATABASE_SSL=false
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_SSL=${DATABASE_SSL}
     networks:
       - menter
   db:
     image: postgres:latest
     container_name: my-db
     ports: 
-      - 5432:5432
+      - ${DB_PORTS}
     environment:
-      - POSTGRES_USER=hatsapol
-      - POSTGRES_DB=hatsapol
-      - POSTGRES_PASSWORD=hatsapol123
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     networks:
       - menter
 networks:
